@@ -11,9 +11,14 @@ router.get('/',(req,res,next) => {
 }); 
 
 router.post('/',(req,res,next) => {
+    const product = {
+        name: req.body.name,
+        price: req.body.price
+    }
     //don't know exactly why 201 is a better status to return in the post method
     res.status(201).json({
-        message:"Post request"
+        message:"Post request",
+        crestedProduct:product
     });
 }); 
 
