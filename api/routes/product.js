@@ -11,7 +11,8 @@ router.get('/',(req,res,next) => {
 }); 
 
 router.post('/',(req,res,next) => {
-    res.status(200).json({
+    //don't know exactly why 201 is a better status to return in the post method
+    res.status(201).json({
         message:"Post request"
     });
 }); 
