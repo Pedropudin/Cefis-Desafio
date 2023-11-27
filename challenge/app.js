@@ -42,5 +42,4 @@ app.use((error,req,res,next) => {
     });
 });
 
-//Run the aplication
 module.exports = app

@@ -1,21 +1,18 @@
 {
-  "name": "cefis-desafio",
+  "name": "challenge",
   "version": "1.0.0",
-  "description": "Full Stack Chalenge Cefis",
-  "main": "index.js",
+  "description": "Cefis Challenge",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Pedropudin/Cefis-Desafio.git"
+    "url": "Cefis-Desafio"
   },
-  "author": "Pedro",
+  "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Pedropudin/Cefis-Desafio/issues"
-  },
-  "homepage": "https://github.com/Pedropudin/Cefis-Desafio#readme",
   "dependencies": {
     "express": "^4.18.2"
   }
