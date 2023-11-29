@@ -1,0 +1,7 @@
+#Folders used for testing
+test/*
+training/*
+
+#Some personal files
+*.pdf
+.vscode/*
