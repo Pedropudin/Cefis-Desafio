@@ -1,9 +1,13 @@
 const express = require("express");
 const app = express();
+const bodyParser = require("body-parser");
+
+const cors = require("cors");
+
+app.use(cors());
 
 //Esses dois não baixei ainda
 //const morgan = require("morgan");
-//const bodyParser = require("body-parser");
 
 //Acess to the methods here
 const userRoutes = require("./api/routes/user");
@@ -14,7 +18,7 @@ app.use((req,res,next) => {
     res.header("Acess-Control-Allow-Origin", "*"),
     res.header("Acess-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
     if(res.method === "OPTIONS") {
-        res.header("Acess-Control-Allow-Methods","PUT, POST, PATCH, DELETE");//Ia colocar GET aqui, não sei se pode
+        res.header("Acess-Control-Allow-Methods","PUT, POST, PATCH, DELETE, GET");//Ia colocar GET aqui, não sei se pode
         return res.status(200).json({});
     }
     next();
