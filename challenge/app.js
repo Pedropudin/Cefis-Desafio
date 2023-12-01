@@ -1,10 +1,20 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
+const mysql = require("mysql");
 
 const cors = require("cors");
 
+const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'pedro',
+    password: 'pedro-cefis',
+    database: 'cefis_challenge'
+});
+
 app.use(cors());
+
+connection.connect()
 
 //Esses dois não baixei ainda
 //const morgan = require("morgan");
