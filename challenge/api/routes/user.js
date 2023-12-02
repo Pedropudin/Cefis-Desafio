@@ -1,17 +1,30 @@
 const express = require("express");
 const router = express.Router();
+const mysql = require("mysql2");
+
+const pool = mysql.createPool({
+    host: "localhost",
+    user: "pedro",
+    password: "pedro-cefis",
+    database: "cefis_challenge"
+}).promise();
 
 router.post("/",(req,res,next) => {
     //Insert a new user in the database
-    const user = {
-        userId: req.body.userId,
-        userName: req.body.userName,
-        userCourses: req.body.userCourses,
-    }
     res.status(201).json({
         message: "User Added",
-        user: user
     });
+    //ESSA PARTE DEBAIXO FUNCIONOU!!!
+    (async () => {
+        await pool.query(
+            'INSERT INTO users values(' +
+            req.body.userId +  ',' +
+            '"' +req.body.first_name + '"' + ',' +
+            '"' + req.body.last_name + '"' + ',' +
+            req.body.type +
+            ')'
+        )
+    })();
 });
 
 router.get("/",(req,res,next) => {

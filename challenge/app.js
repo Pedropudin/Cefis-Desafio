@@ -1,13 +1,15 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
+const morgan = require("morgan");
 
 const cors = require("cors");
 
 app.use(cors());
 
-//Esses dois não baixei ainda
-//const morgan = require("morgan");
+app.use(morgan("dev")); 
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
 //Acess to the methods here
 const userRoutes = require("./api/routes/user");
