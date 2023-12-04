@@ -5,3 +5,4 @@ training/*
 #Some personal files
 *.pdf
 .vscode/*
+print/*

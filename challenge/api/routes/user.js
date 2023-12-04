@@ -11,14 +11,15 @@ const pool = mysql.createPool({
 
 router.post("/",(req,res,next) => {
     //Insert a new user in the database
+    console.log(req.body);
     res.status(201).json({
         message: "User Added",
+        user: req.body
     });
-    //ESSA PARTE DEBAIXO FUNCIONOU!!!
     (async () => {
         await pool.query(
             'INSERT INTO users values(' +
-            req.body.userId +  ',' +
+            req.body.user_id +  ',' +
             '"' +req.body.first_name + '"' + ',' +
             '"' + req.body.last_name + '"' + ',' +
             req.body.type +

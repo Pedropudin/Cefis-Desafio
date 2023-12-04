@@ -5,11 +5,11 @@ import React, {useEffect,useState} from 'react';
 
 //Import functions and style from other files
 import './globals.css';
-import App from './Main';
+import DataEntryPage from './Main';
 
 
 export default function Page() {
   return (
-    <App />
+    <DataEntryPage />
   );
 };
