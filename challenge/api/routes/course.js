@@ -3,6 +3,7 @@ const router = express.Router();
 
 router.get("/",(req,res,next) => {
     //Get a list of the courses available
+    
 });
 
 router.post("/",(req,res,next) => {

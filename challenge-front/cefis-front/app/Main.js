@@ -2,6 +2,7 @@
 
 //Import react element
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 
 //Import functions from other files
 import My_Button from "./elements/Button";
@@ -56,10 +57,11 @@ const DataEntryPage = () => {
   };
 
   return (
-    <div>
-      <h1>Data Entry Page</h1>
-      <TextBox onSubmit={handleConnection} />
+    <div align="center">
+      <h1>Home-Page</h1>
+      <Link href={"/sign-in"}>Clica em mim!</Link>
     </div>
   );
 };
+
 export default DataEntryPage;
