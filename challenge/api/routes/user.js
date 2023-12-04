@@ -11,11 +11,6 @@ const pool = mysql.createPool({
 
 router.post("/",(req,res,next) => {
     //Insert a new user in the database
-    console.log(req.body);
-    res.status(201).json({
-        message: "User Added",
-        user: req.body
-    });
     (async () => {
         await pool.query(
             'INSERT INTO users values(' +
@@ -26,27 +21,62 @@ router.post("/",(req,res,next) => {
             ')'
         )
     })();
-});
-
-router.get("/",(req,res,next) => {
-    //Get a list of the users
-    res.status(200).json({
-        message: "Send Users"
-        //Don't know how to actually send that data #########
+    res.status(201).json({
+        message: "User Added",
+        user: req.body
     });
 });
 
-router.get("/:userId",(req,res,next) => {
+router.get("/",async (req,res,next) => {
+    //Get a list of the users
+
+    const all_users = await pool.query("SELECT * FROM users");
+
+    res.status(200).json({
+        message: "Send Users",
+        all_users: all_users[0]
+    });
+});
+
+router.get("/:userId",async (req,res,next) => {
     //Get the info of the user with the Id
-    
+    const id = req.params.userId;
+
+    const data = await pool.query("SELECT * FROM users WHERE user_id = " + id);
+
+    res.status(200).json({
+        message: "Get User Info",
+        user: data[0][0]
+    });
 });
 
-router.put("/:userId",(req,res,next) => {
+router.put("/:userId",async (req,res,next) => {
     //Change the info if the user with the specific Id
+
+    const id = req.params.userId;
+
+    await pool.query(
+        "UPDATE users SET user_id = " + req.body.user_id + 
+        ", first_name = '" + req.body.first_name + 
+        "', last_name = '" + req.body.last_name + 
+        "', type = " + req.body.type + 
+        " WHERE user_id = " + id
+    );
+    res.status(200).json({
+        message: "User info changed",
+        new_user: req.body
+    })
 });
 
-router.delete("/:userId",(req,res,next) => {
+router.delete("/:userId",async (req,res,next) => {
     //Delete the user
+    const id = req.params.userId;
+
+    await pool.query("DELETE FROM users WHERE user_id = " + id);
+
+    res.status(200).json({
+        message: "User Deleted"
+    });
 });
 
 module.exports = router;
