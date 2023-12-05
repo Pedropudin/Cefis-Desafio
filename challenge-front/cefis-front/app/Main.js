@@ -8,8 +8,9 @@ import Link from 'next/link';
 import My_Button from "./elements/Button";
 import TextBox from './elements/TextBox-user';
 import Title from './elements/Title';
+import Header from './elements/Header';
 
-//import "./Main.css";
+import "./Main.css";
 
 function App() {
 
@@ -58,8 +59,17 @@ const DataEntryPage = () => {
 
   return (
     <div align="center">
-      <h1>Home-Page</h1>
-      <Link href={"/sign-in"}>Clica em mim!</Link>
+      <Header/>
+      <div className='page'>
+        <div className='page-center'>
+          <p>Dúvidas?</p>
+          <p>Envie uma mensagem para seu professor agora!</p>
+          <a href='http://localhost:3000/about'/>
+          <Link href={"/sign-in"}>
+            <button className='sign-in-button'>Envie sua Dúvida!</button>
+          </Link>
+        </div>
+      </div>
     </div>
   );
 };

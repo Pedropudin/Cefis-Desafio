@@ -11,20 +11,32 @@ const pool = mysql.createPool({
 
 router.post("/",(req,res,next) => {
     //Insert a new user in the database
-    (async () => {
-        await pool.query(
-            'INSERT INTO users values(' +
-            req.body.user_id +  ',' +
-            '"' +req.body.first_name + '"' + ',' +
-            '"' + req.body.last_name + '"' + ',' +
-            req.body.type +
-            ')'
-        )
-    })();
-    res.status(201).json({
-        message: "User Added",
-        user: req.body
-    });
+    
+    function onlyNumbers(string) {
+        const onlyNumberRule = /^\d+$/;
+        return onlyNumberRule.test(string);
+    }
+
+    if(onlyNumbers(req.body.user_id) && onlyNumbers(req.body.type)){
+        (async () => {
+            await pool.query(
+                'INSERT INTO users values(' +
+                req.body.user_id +  ',' +
+                '"' +req.body.first_name + '"' + ',' +
+                '"' + req.body.last_name + '"' + ',' +
+                req.body.type +
+                ')'
+            )
+        })();
+        res.status(201).json({
+            message: "User Added",
+            user: req.body
+        });
+    } else{
+        const error = new Error("Invalid syntax");
+        error.status = 404;
+        next(error); //Don't know if this error works
+    }
 });
 
 router.get("/",async (req,res,next) => {

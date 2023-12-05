@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
+const mysql = require("mysql2");
 
 const cors = require("cors");
 
@@ -26,6 +27,17 @@ app.use((req,res,next) => {
     next();
 });
 
+const pool = mysql.createPool({
+    host: "localhost",
+    user: "pedro",
+    password: "pedro-cefis",
+    database: "cefis_challenge"
+}).promise();
+
+(async () => {
+    await pool.query("USE cefis_challenge")
+})();
+
 //Set midlewares
 app.use("/user",userRoutes);
 app.use("/course",courseRoutes);
@@ -37,6 +49,7 @@ app.use((req,res,next) => {
     error.status = 404;
     next(error);
 });
+
 //Other errors
 app.use((error,req,res,next) => {
     res.status(error.status || 500);

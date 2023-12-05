@@ -1,0 +1,35 @@
+.header {
+    background-color: black;
+    padding: 10px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-left {
+    font-size: 32px;
+    display: flex;
+    align-items: center;
+    color: white;
+    float: left;
+}
+
+.header-right {
+    color: white;
+    float: right;
+}
+
+.about {
+    background-color: #C8C8C8;
+    font-size: 30px;
+    border-radius: 30px;
+    padding: 10px 10px;
+}
+
+.about:hover {
+    background-color: white;
+}
+
+img {
+    filter: invert(100%);
+}

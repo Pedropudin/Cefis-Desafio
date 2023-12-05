@@ -1,0 +1,22 @@
+.page {
+    width: 90%;
+    height: 600px;
+    border: 5px;
+}
+
+.page-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);  
+    font-size: 32px;
+    line-height: normal;
+    
+}
+
+.sign-in-button {
+    background-color: #C8C8C8;
+    font-size: 32px;
+    border-radius: 30px;
+    padding: 10px 10px;
+}

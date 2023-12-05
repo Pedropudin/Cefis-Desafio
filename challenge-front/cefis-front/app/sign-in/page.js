@@ -2,7 +2,7 @@
 
 import TextBox from "../elements/TextBox-user"
 
-let cond;
+let cond = 0;
 
 export default function Mypage () {
     async function signIn(formData) {
@@ -15,22 +15,48 @@ export default function Mypage () {
             body: JSON.stringify(formData),
         });
         console.log("Server response:",res);
-        cond = true;
+        cond = 1;
     } catch (error) {
-        cond = false;
+        cond = -1;
         console.error("There was an unexpected error:",error);
     }
 };
+    console.log(cond);
+    switch (cond) {
+        case 1:
+            return(
+                <div align="center">
+                    <h1>Sign-in</h1>
+                    <TextBox onSubmit={signIn}/>
+                    <p>Sucesso!</p>
+                </div>
+            )
+            break;
+        case -1:
+            return(
+                <div align="center">
+                    <h1>Sign-in</h1>
+                    <TextBox onSubmit={signIn}/>
+                    <p>Parace que alguma informação está incorreta</p>
+                </div>
+            )
+            break;
+        default:
+            return(
+                <div align="center">
+                    <h1>Sign-in</h1>
+                    <TextBox onSubmit={signIn}/>
+                </div>
+            )
+            break;
+    }
 
     return(
         <div align="center">
             <h1>Sign-in</h1>
             <TextBox onSubmit={signIn}/>
-            {cond ? (
-                <p>É verdade</p>
-            ):(
-                <p>É mentira</p>
-            )}
+            {cond === true && <p>Account Created</p>}
+            {cond === false && <p>There was a problem</p>}
         </div>
     )
 }
