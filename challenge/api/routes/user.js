@@ -17,11 +17,10 @@ router.post("/",(req,res,next) => {
         return onlyNumberRule.test(string);
     }
 
-    if(onlyNumbers(req.body.user_id) && onlyNumbers(req.body.type)){
+    if(onlyNumbers(req.body.type)){
         (async () => {
             await pool.query(
-                'INSERT INTO users values(' +
-                req.body.user_id +  ',' +
+                'INSERT INTO users (first_name,last_name,type) values(' +
                 '"' +req.body.first_name + '"' + ',' +
                 '"' + req.body.last_name + '"' + ',' +
                 req.body.type +
@@ -72,10 +71,10 @@ router.put("/:userId",async (req,res,next) => {
         return onlyNumberRule.test(string);
     }
 
-    if(onlyNumbers(req.body.user_id) && onlyNumbers(req.body.type)){
+    if(onlyNumbers(req.body.type)){
         await pool.query(
-            "UPDATE users SET user_id = " + req.body.user_id + 
-            ", first_name = '" + req.body.first_name + 
+            "UPDATE users SET" + 
+            " first_name = '" + req.body.first_name + 
             "', last_name = '" + req.body.last_name + 
             "', type = " + req.body.type + 
             " WHERE user_id = " + id

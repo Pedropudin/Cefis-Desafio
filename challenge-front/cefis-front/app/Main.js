@@ -65,7 +65,7 @@ const DataEntryPage = () => {
           <p>Dúvidas?</p>
           <p>Envie uma mensagem para seu professor agora!</p>
           <a href='http://localhost:3000/about'/>
-          <Link href={"/sign-in"}>
+          <Link href={"/login"}>
             <button className='sign-in-button'>Envie sua Dúvida!</button>
           </Link>
         </div>
