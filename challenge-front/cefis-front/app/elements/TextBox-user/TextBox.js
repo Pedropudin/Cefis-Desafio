@@ -1,6 +1,5 @@
 import "./TextBox.css";
 import { useState } from "react";
-import Link from "next/link";
 
 export function TextBox({onSubmit}){
 
