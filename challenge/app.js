@@ -9,6 +9,7 @@ const cors = require("cors");
 app.use(cors());
 
 app.use(morgan("dev")); 
+//Não sei se precisa desse pacote
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 

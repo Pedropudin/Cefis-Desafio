@@ -34,7 +34,7 @@ router.post("/",(req,res,next) => {
         });
     } else{
         const error = new Error("Invalid syntax");
-        error.status = 404;
+        error.status = 400;
         next(error); //Don't know if this error works
     }
 });
@@ -67,17 +67,28 @@ router.put("/:userId",async (req,res,next) => {
 
     const id = req.params.userId;
 
-    await pool.query(
-        "UPDATE users SET user_id = " + req.body.user_id + 
-        ", first_name = '" + req.body.first_name + 
-        "', last_name = '" + req.body.last_name + 
-        "', type = " + req.body.type + 
-        " WHERE user_id = " + id
-    );
-    res.status(200).json({
-        message: "User info changed",
-        new_user: req.body
-    })
+    function onlyNumbers(string) {
+        const onlyNumberRule = /^\d+$/;
+        return onlyNumberRule.test(string);
+    }
+
+    if(onlyNumbers(req.body.user_id) && onlyNumbers(req.body.type)){
+        await pool.query(
+            "UPDATE users SET user_id = " + req.body.user_id + 
+            ", first_name = '" + req.body.first_name + 
+            "', last_name = '" + req.body.last_name + 
+            "', type = " + req.body.type + 
+            " WHERE user_id = " + id
+        );
+        res.status(200).json({
+            message: "User info changed",
+            new_user: req.body
+        })
+    } else {
+        const error = new Error("Invalid syntax");
+        error.status = 400;
+        next(error); //Don't know if this error works either
+    }
 });
 
 router.delete("/:userId",async (req,res,next) => {
