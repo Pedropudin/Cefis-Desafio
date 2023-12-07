@@ -16,6 +16,7 @@ app.use(bodyParser.json());
 //Acess to the methods here
 const userRoutes = require("./api/routes/user");
 const courseRoutes = require("./api/routes/course");
+const questionRoutes = require("./api/routes/questions")
 
 //Deal with CORS errors
 app.use((req,res,next) => {
@@ -42,6 +43,7 @@ const pool = mysql.createPool({
 //Set midlewares
 app.use("/user",userRoutes);
 app.use("/course",courseRoutes);
+app.use("/questions",questionRoutes);
 
 //Deal with errors 
 //Page not found error

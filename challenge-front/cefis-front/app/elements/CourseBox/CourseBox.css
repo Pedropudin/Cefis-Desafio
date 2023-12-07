@@ -1,0 +1,16 @@
+.courseBox {
+    align-content: center;
+    border: 5px solid;
+}
+
+.courseBox h {
+    font-size: 30px;
+}
+
+.courseBox teacher {
+    color: chocolate;
+}
+
+.courseBox duration {
+    font-size: 10px;
+}

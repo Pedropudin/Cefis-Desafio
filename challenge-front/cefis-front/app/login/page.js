@@ -19,7 +19,11 @@ export default function Mypage () {
             for(let i=0;i<data.all_users.length;i++){
                 userComp = data.all_users[i];
                 if(userInfo.first_name === userComp.first_name && userInfo.last_name === userComp.last_name) {
-                    router.push("http://localhost:3000/users?id=" + userComp.user_id);
+                    if(userInfo.type === "0"){
+                        router.push("http://localhost:3000/user/student?id=" + userComp.user_id);
+                    } else if(userInfo.type === 1){
+                        router.push("http://localhost:3000/user/teacher?id=" + userComp.user_id);
+                    }
                 }
             };
         });

@@ -1,30 +1,37 @@
 //import "./Signup.css"
 "use client";
 
+import { useRouter } from "next/navigation";
+
 import TextBox from "../elements/TextBox-user";
 import Link from "next/link";
 
 let cond = 0;
+const APIurl = "http://localhost:8000"
+const PageUrl = "http://localhost:3000"
 
 export default function SignupPage() {
 
+    const router = useRouter();
+
     async function signup(formData) {
         try {
-            const res = await fetch("http://localhost:8000/user",{
+            const res = await fetch(APIurl + "/user",{
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(formData),
             });
+            const data = await res.json();
             console.log("Server response:",res);
+            console.log(data);
             cond = 1;
         } catch (error) {
             cond = -1;
             console.error("There was an unexpected error:",error);
         }
     };
-        console.log(cond);
 
     return(
         <div align="center">
