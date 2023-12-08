@@ -31,7 +31,7 @@ router.get("/",async (req,res,next) => {
 
     res.status(200).json({
         message: "Get questions",
-        all_questions: all_questions
+        all_questions: all_questions[0]
     });
 });
 
@@ -70,3 +70,5 @@ router.delete("/questionId",async (req,res,next) => {
         message: "Question Deleted"
     });
 });
+
+module.exports = router;

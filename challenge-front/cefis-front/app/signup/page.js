@@ -1,5 +1,6 @@
-//import "./Signup.css"
 "use client";
+
+//import "./Signup.css"
 
 import { useRouter } from "next/navigation";
 
@@ -24,8 +25,10 @@ export default function SignupPage() {
                 body: JSON.stringify(formData),
             });
             const data = await res.json();
-            console.log("Server response:",res);
             console.log(data);
+            if(res.status === 201){
+                router.push(PageUrl + "/login");
+            }
             cond = 1;
         } catch (error) {
             cond = -1;

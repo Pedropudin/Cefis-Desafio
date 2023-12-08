@@ -12,11 +12,20 @@ export default async function({courseId}) {
 
     const teacherInfo = teacherData.user;
 
+    function sendQuestion(){
+        console.log("Rodou");
+    }
+
     return(
         <div className="courseBox">
         <h1>{courseInfo.name}</h1>
         <p className="teacher">{teacherInfo.first_name}</p>
+        <label>
+            Question:
+            <textarea/>
+        </label>
         <p className="duration">{courseInfo.duration}</p>
+        <button onClick={sendQuestion}>Aqui</button>
         </div>
     );
 }

@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
-export function QuestionBox({onSubmit,course}) {
+const APIurl = "http://localhost:8000";
+
+export function SolutionBox({onSubmit}) {
 
     //Create JSON
     const [formData, setFormData] = useState({
@@ -20,18 +22,21 @@ export function QuestionBox({onSubmit,course}) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        onSubmit(formData,course);
+        onSubmit(formData);
     };
 
     return(
         <div className="question-box">
+        <div>
+        <p>{formData.text}</p>
         <form onSubmit={handleSubmit}>
         <label>
-            Questão:
-            <textarea name="text" value={formData.text} onChange={handleChange}/>
+            Solução:
+            <textarea name="text" value={formData.solution} onChange={handleChange}/>
         </label>
         <button type="submit">Clica</button>
         </form>
+        </div>
         </div>
     );
 }

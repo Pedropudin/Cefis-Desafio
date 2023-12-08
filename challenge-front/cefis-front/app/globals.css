@@ -1,4 +1,10 @@
-body {
+:root {
     background-color: white;
-    font-family: Verdana, sans-serif;
+    font-family: Roboto, "Ubuntu", Arial, sans-serif;
+}
+
+/*Deixa os links como texto normal (sem cor e barra embaixo)*/
+a {
+    color: inherit;
+    text-decoration: none;
 }

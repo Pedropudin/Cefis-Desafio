@@ -1,15 +1,14 @@
-"use client";
-
 //Import react elements
-import React, {useEffect,useState} from 'react';
+//import React from 'react';
+//Don't think I need to import this here, but is being used somewhere?
 
 //Import functions and style from other files
 import './globals.css';
-import DataEntryPage from './Main';
+import HomePage from './Main';
 
 
 export default function Page() {
   return (
-    <DataEntryPage />
+    <HomePage />
   );
 };

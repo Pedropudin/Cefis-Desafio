@@ -20,6 +20,7 @@ export function TextBox({onSubmit}){
     const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit(formData);
+    console.log(formData);
     };
     
 
@@ -27,18 +28,22 @@ export function TextBox({onSubmit}){
     <div className="text-box">
     <form onSubmit={handleSubmit}>
       <label>
-        first_name:
+        Primeiro Nome:    
         <input type="text" name="first_name" value={formData.first_name} onChange={handleChange} />
       </label>
       <br />
       <label>
-        last_name:
+        Sobrenome:
         <input type="text" name="last_name" value={formData.last_name} onChange={handleChange} />
       </label>
       <br />
       <label>
-        type:
-        <input type="text" name="type" value={formData.type} onChange={handleChange} />
+        Tipo:
+        <select name="type" onChange={handleChange}>
+          <option value={'-1'}>--Escolha uma opção--</option>
+          <option value={'0'}>Aluno</option>
+          <option value={"1"}>Professor</option>
+        </select>
       </label>
       <br />
       <button type="submit">Submit</button>

@@ -1,6 +1,7 @@
 #Folders used for testing
 test/*
 training/*
+training-2/*
 
 #Some personal files
 *.pdf
